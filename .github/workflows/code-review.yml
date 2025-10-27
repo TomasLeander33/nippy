@@ -1,0 +1,26 @@
+name: Codex AI Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main, develop]
+
+jobs:
+  codex-review:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Codex Review
+        uses: codex-ai/code-review-action@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+          include_paths: |
+            frontend/
+            backend/
+          exclude_paths: |
+            node_modules/
+            dist/
