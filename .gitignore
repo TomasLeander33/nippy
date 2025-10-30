@@ -1,2 +1,7 @@
 node_modules
 backend/.env.local
+*storybook.log
+storybook-static
+*.stories.tsx merge=ours
+stackoverflow-test
+stories
